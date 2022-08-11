@@ -38,7 +38,7 @@ public class TradeStoreController {
 	@PutMapping("/update")
 	public ResponseEntity<String> updateTradeEntry(@RequestBody TradeStore tradeStore) throws Exception{
 		try {
-			service.saveTradeStore(tradeStore);
+			service.updateTradeStore(tradeStore);
 			return new ResponseEntity<>(HttpStatus.CREATED);
 		}catch (TradeStoreValidException e) {
 			throw new TradeStoreValidException(e.getMessage());

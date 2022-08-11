@@ -57,9 +57,20 @@ public class TradeStoreService {
 		return entity;
 	}
 	
+	public List<TradeStoreEntity> findAll(){
+		return tradeStoreRepository.findAll();
+	}
+	
 	private boolean isExpired(long maturityDate) {
 		long currentTime = System.currentTimeMillis();
 		return currentTime > maturityDate;
+	}
+
+
+	public TradeStoreEntity updateTradeStore(TradeStore tradeStore) throws TradeStoreValidException {
+		getTradeById(tradeStore.getTradeId(), tradeStore.getVersion());
+		return saveTradeStore(tradeStore);
+		
 	}
 
 }
